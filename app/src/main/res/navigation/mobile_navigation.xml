@@ -17,4 +17,10 @@
         android:label="@string/home_toolbar"
         tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/countries_dest"
+        android:name="com.example.covid_19status.CountriesFragment"
+        android:label="@string/countries"
+        tools:layout="@layout/fragment_countries" />
+
 </navigation>

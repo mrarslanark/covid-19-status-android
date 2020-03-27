@@ -8,6 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
+import com.example.covid_19status.Constants.Companion.BaseURL
+import com.example.covid_19status.Constants.Companion.COIVD19_APP_ID
+import com.example.covid_19status.Constants.Companion.LOG_TAG
 import com.example.covid_19status.databinding.ActivityMainBinding
 import com.example.covid_19status.response.CommonResponse
 import com.example.covid_19status.response.CountryResponse
@@ -18,10 +21,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
-const val BaseURL = "https://api.covid19api.com/"
-const val COIVD19_APP_ID = "20200326222537"
-const val LOG_TAG = "COVID19"
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,12 +47,12 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BaseURL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        // val retrofit = Retrofit.Builder()
+        //    .baseUrl(BaseURL)
+        //    .addConverterFactory(GsonConverterFactory.create())
+        //    .build()
 
-        val service = retrofit.create(APIService::class.java)
+        // val service = retrofit.create(APIService::class.java)
 
         // region Data Functions
 
