@@ -2,9 +2,15 @@ package com.example.covid_19status
 
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.example.covid_19status.response.CountryResponse
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.*
+import com.example.covid_19status.databinding.ActivityMainBinding
 import com.example.covid_19status.response.CommonResponse
+import com.example.covid_19status.response.CountryResponse
 import com.example.covid_19status.response.RootResponse
 import com.example.covid_19status.response.SummaryResponse
 import retrofit2.Call
@@ -19,10 +25,28 @@ const val LOG_TAG = "COVID19"
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        setSupportActionBar(binding.toolbar)
+
+        val host =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+
+        // region Setup Action Bar
+        val navController = host.navController
+
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.home_dest, R.id.countries_dest, R.id.safety_dest)
+        )
+
+        binding.bottomNavView.setupWithNavController(navController)
+        setupActionBarWithNavController(navController, appBarConfiguration)
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BaseURL)
@@ -50,7 +74,7 @@ class MainActivity : AppCompatActivity() {
 
     // region Origin -> https://api.covid19api.com/live/country/{slug}/status/{status}
     private fun getLiveByCountryAndStatus(slug: String, status: String, service: APIService) {
-        val call = service.getLiveByCountryAndStatus(slug, status,  COIVD19_APP_ID)
+        val call = service.getLiveByCountryAndStatus(slug, status, COIVD19_APP_ID)
         call.enqueue(object : Callback<List<CommonResponse>> {
             override fun onFailure(call: Call<List<CommonResponse>>, t: Throwable) {
                 Log.d(LOG_TAG, t.localizedMessage, t)
@@ -73,7 +97,7 @@ class MainActivity : AppCompatActivity() {
 
     // region Origin -> https://api.covid19api.com/total/country/{slug}/status/{status}
     private fun getDataByCountryTotal(slug: String, status: String, service: APIService) {
-        val call = service.getDataByCountryTotal(slug, status,  COIVD19_APP_ID)
+        val call = service.getDataByCountryTotal(slug, status, COIVD19_APP_ID)
         call.enqueue(object : Callback<List<CommonResponse>> {
             override fun onFailure(call: Call<List<CommonResponse>>, t: Throwable) {
                 Log.d(LOG_TAG, t.localizedMessage, t)
@@ -96,7 +120,7 @@ class MainActivity : AppCompatActivity() {
 
     // region Origin -> https://api.covid19api.com/country/{slug}/status/{status}/live
     private fun getDataByCountryLive(slug: String, status: String, service: APIService) {
-        val call = service.getDataByCountryLive(slug, status,  COIVD19_APP_ID)
+        val call = service.getDataByCountryLive(slug, status, COIVD19_APP_ID)
         call.enqueue(object : Callback<List<CommonResponse>> {
             override fun onFailure(call: Call<List<CommonResponse>>, t: Throwable) {
                 Log.d(LOG_TAG, t.localizedMessage, t)
@@ -119,7 +143,7 @@ class MainActivity : AppCompatActivity() {
 
     // region Origin -> https://api.covid19api.com/country/{slug}/status/{status}
     private fun getDataByCountry(slug: String, status: String, service: APIService) {
-        val call = service.getDataByCountry(slug, status,  COIVD19_APP_ID)
+        val call = service.getDataByCountry(slug, status, COIVD19_APP_ID)
         call.enqueue(object : Callback<List<CommonResponse>> {
             override fun onFailure(call: Call<List<CommonResponse>>, t: Throwable) {
                 Log.d(LOG_TAG, t.localizedMessage, t)
@@ -142,7 +166,7 @@ class MainActivity : AppCompatActivity() {
 
     // region Origin -> https://api.covid19api.com/dayone/country/{slug}/status/{confirmed}/live
     private fun getDayOneTotalData(slug: String, status: String, service: APIService) {
-        val call = service.getDayOneTotalData(slug, status,  COIVD19_APP_ID)
+        val call = service.getDayOneTotalData(slug, status, COIVD19_APP_ID)
         call.enqueue(object : Callback<List<CommonResponse>> {
             override fun onFailure(call: Call<List<CommonResponse>>, t: Throwable) {
                 Log.d(LOG_TAG, t.localizedMessage, t)
@@ -165,7 +189,7 @@ class MainActivity : AppCompatActivity() {
 
     // region Origin -> https://api.covid19api.com/dayone/country/{slug}/status/{confirmed}/live
     private fun getDayOneLiveData(slug: String, status: String, service: APIService) {
-        val call = service.getDayOneLiveData(slug, status,  COIVD19_APP_ID)
+        val call = service.getDayOneLiveData(slug, status, COIVD19_APP_ID)
         call.enqueue(object : Callback<List<CommonResponse>> {
             override fun onFailure(call: Call<List<CommonResponse>>, t: Throwable) {
                 Log.d(LOG_TAG, t.localizedMessage, t)
@@ -188,7 +212,7 @@ class MainActivity : AppCompatActivity() {
 
     // region  Origin -> https://api.covid19api.com/dayone/country/{slug}/status/confirmed
     private fun getDayOneData(slug: String, status: String, service: APIService) {
-        val call = service.getDayOneData(slug, status,  COIVD19_APP_ID)
+        val call = service.getDayOneData(slug, status, COIVD19_APP_ID)
         call.enqueue(object : Callback<List<CommonResponse>> {
             override fun onFailure(call: Call<List<CommonResponse>>, t: Throwable) {
                 Log.d(LOG_TAG, t.localizedMessage, t)
@@ -277,4 +301,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     // endregionplayer55
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
+                || super.onOptionsItemSelected(item)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfiguration)
+    }
 }

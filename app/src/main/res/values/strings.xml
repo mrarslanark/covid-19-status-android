@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name" translatable="false">COVID-19 Status</string>
+    <string name="home">Stats</string>
+    <string name="home_toolbar">COVID-19 Statistics</string>
+    <string name="countries">Countries</string>
+    <string name="safety">Safety</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
