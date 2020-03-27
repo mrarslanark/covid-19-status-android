@@ -209,7 +209,7 @@ class MainActivity : AppCompatActivity() {
 
     // endregion
 
-    // region  Origin -> https://api.covid19api.com/dayone/country/{slug}/status/confirmed
+    // region  Origin -> https://api.covid19api.com/dayone/country/{slug}/{status}/
     private fun getDayOneData(slug: String, status: String, service: APIService) {
         val call = service.getDayOneData(slug, status, COIVD19_APP_ID)
         call.enqueue(object : Callback<List<CommonResponse>> {

@@ -12,4 +12,5 @@
     <string name="total_recovered">Total Recovered</string>
     <string name="updating">Updating…</string>
     <string name="updated">Update Again</string>
+    <string name="ERROR_700">ERROR 700 OCCURRED!</string>
 </resources>

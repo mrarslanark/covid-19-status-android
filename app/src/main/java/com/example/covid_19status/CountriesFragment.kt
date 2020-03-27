@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.covid_19status.Constants.Companion.BaseURL
@@ -20,7 +21,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 /**
  * A simple [Fragment] subclass.
  */
-class CountriesFragment : Fragment() {
+class CountriesFragment : Fragment(),
+    CountryAdapter.CountryClickListener {
 
     private lateinit var binding: FragmentCountriesBinding
 
@@ -45,7 +47,7 @@ class CountriesFragment : Fragment() {
                 response: Response<List<CountryResponse>>
             ) {
                 val data = response.body()
-                val adapter = CountryAdapter(data!!)
+                val adapter = CountryAdapter(data!!, this@CountriesFragment)
                 binding.countryRv.adapter = adapter
                 binding.progressCircular.visibility = View.GONE
             }
@@ -84,6 +86,10 @@ class CountriesFragment : Fragment() {
 
         fun onSuccess(call: Call<List<CountryResponse>>, response: Response<List<CountryResponse>>)
         fun onFailure(call: Call<List<CountryResponse>>, t: Throwable)
+    }
+
+    override fun countryClickListener(slug: String) {
+        Toast.makeText(requireContext(), slug, Toast.LENGTH_LONG).show()
     }
 
 }
