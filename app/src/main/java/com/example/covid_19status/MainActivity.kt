@@ -46,29 +46,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-        // val retrofit = Retrofit.Builder()
-        //    .baseUrl(BaseURL)
-        //    .addConverterFactory(GsonConverterFactory.create())
-        //    .build()
-
-        // val service = retrofit.create(APIService::class.java)
-
-        // region Data Functions
-
-        // getRootData(service)
-        // getSummaryData(service)
-        // getCountriesData(service)
-        // getDayOneData("pakistan", "recovered", service)
-        // getDayOneLiveData("pakistan", "confirmed", service)
-        // getDayOneTotalData("pakistan", "deaths", service)
-        // getDataByCountry("pakistan", "recovered", service)
-        // getDataByCountryLive("pakistan", "deaths", service)
-        // getDataByCountryTotal("pakistan", "confirmed", service)
-        // getLiveByCountryAndStatus("pakistan", "confirmed", service)
-
-        // endregion
-
     }
 
     // region Origin -> https://api.covid19api.com/live/country/{slug}/status/{status}

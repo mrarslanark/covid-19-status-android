@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.example.covid_19status.Constants.Companion.BaseURL
 import com.example.covid_19status.databinding.FragmentCountriesBinding
 import com.example.covid_19status.response.CountryResponse
@@ -89,7 +90,7 @@ class CountriesFragment : Fragment(),
     }
 
     override fun countryClickListener(slug: String) {
-        Toast.makeText(requireContext(), slug, Toast.LENGTH_LONG).show()
+        Navigation.createNavigateOnClickListener(R.id.country_to_country_detail_dest)
     }
 
 }
