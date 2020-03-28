@@ -2,10 +2,7 @@ package com.example.covid_19status
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.covid_19status.Constants.Companion.COIVD19_APP_ID
@@ -29,6 +26,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         return binding.root
@@ -39,11 +37,11 @@ class HomeFragment : Fragment() {
 
         getData()
 
-        binding.update.setOnClickListener {
+        binding.refresh.setOnRefreshListener {
             binding.updatingLabel.visibility = View.VISIBLE
             binding.progressBar.visibility = View.VISIBLE
-            binding.update.visibility = View.INVISIBLE
             getData()
+            binding.refresh.isRefreshing = false
         }
     }
 
@@ -55,7 +53,6 @@ class HomeFragment : Fragment() {
             ) {
                 binding.updatingLabel.visibility = View.INVISIBLE
                 binding.progressBar.visibility = View.INVISIBLE
-                binding.update.visibility = View.VISIBLE
             }
 
             override fun onFailure(call: Call<SummaryResponse>, t: Throwable) {
@@ -104,6 +101,22 @@ class HomeFragment : Fragment() {
 
         fun onSuccess(call: Call<SummaryResponse>, response: Response<SummaryResponse>)
         fun onFailure(call: Call<SummaryResponse>, t: Throwable)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.home_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_refresh -> {
+                binding.updatingLabel.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.VISIBLE
+                getData()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }

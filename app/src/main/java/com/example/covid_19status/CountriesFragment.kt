@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.covid_19status.Constants.Companion.BaseURL
 import com.example.covid_19status.databinding.FragmentCountriesBinding
 import com.example.covid_19status.response.CountryResponse
@@ -90,7 +92,8 @@ class CountriesFragment : Fragment(),
     }
 
     override fun countryClickListener(slug: String) {
-        Navigation.createNavigateOnClickListener(R.id.country_to_country_detail_dest)
+        val action = CountriesFragmentDirections.countryToCountryDetailDest(slug)
+        findNavController().navigate(action)
     }
 
 }

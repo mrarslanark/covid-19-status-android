@@ -20,7 +20,7 @@ class CountryAdapter internal constructor(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(countries: CountryResponse) {
-            binding.country = countries
+            binding.countries = countries
             binding.executePendingBindings()
         }
     }

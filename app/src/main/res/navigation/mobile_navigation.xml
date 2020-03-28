@@ -22,6 +22,7 @@
         android:name="com.example.covid_19status.CountriesFragment"
         android:label="@string/countries"
         tools:layout="@layout/fragment_countries">
+
         <action
             android:id="@+id/country_to_country_detail_dest"
             app:destination="@id/countryDetailFragment"
@@ -33,7 +34,12 @@
     <fragment
         android:id="@+id/countryDetailFragment"
         android:name="com.example.covid_19status.CountryDetailFragment"
-        android:label="fragment_country_detail"
-        tools:layout="@layout/fragment_country_detail" />
+        android:label="@string/country_detail"
+        tools:layout="@layout/fragment_country_detail" >
+        <argument
+            android:name="slug"
+            app:argType="string"
+            android:defaultValue="country" />
+    </fragment>
 
 </navigation>

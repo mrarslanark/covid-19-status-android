@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="country"
+            name="countries"
             type="com.example.covid_19status.response.CountryResponse" />
     </data>
 
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.90"
             android:padding="10dp"
-            android:text="@{country.country.trim()}"
+            android:text="@{countries.country.trim()}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/black"
             tools:text="Country" />
