@@ -5,13 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.example.covid_19status.Constants.Companion.BaseURL
+import com.example.covid_19status.Constants.Companion.COVID19_URL
 import com.example.covid_19status.databinding.FragmentCountriesBinding
 import com.example.covid_19status.response.CountryResponse
 import retrofit2.Call
@@ -65,7 +62,7 @@ class CountriesFragment : Fragment(),
     private fun commit(countriesRetrofitResponseListener: CountriesRetrofitResponseListener) {
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(BaseURL)
+            .baseUrl(COVID19_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

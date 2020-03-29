@@ -15,7 +15,15 @@
         android:id="@+id/home_dest"
         android:name="com.example.covid_19status.HomeFragment"
         android:label="@string/home_toolbar"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/dest_info"
+            app:destination="@id/infoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/countries_dest"
@@ -31,15 +39,21 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
     <fragment
         android:id="@+id/countryDetailFragment"
         android:name="com.example.covid_19status.CountryDetailFragment"
         android:label="@string/country_detail"
-        tools:layout="@layout/fragment_country_detail" >
+        tools:layout="@layout/fragment_country_detail">
         <argument
             android:name="slug"
-            app:argType="string"
-            android:defaultValue="country" />
+            android:defaultValue="country"
+            app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.example.covid_19status.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
 
 </navigation>

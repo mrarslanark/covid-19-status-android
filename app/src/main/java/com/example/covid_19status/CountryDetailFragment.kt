@@ -48,12 +48,12 @@ class CountryDetailFragment : Fragment() {
         }
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(Constants.BaseURL)
+            .baseUrl(Constants.COVID19_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val service = retrofit.create(APIService::class.java)
-        val call = service.getDataByCountryTotal(slug, defaultStatus, Constants.COIVD19_APP_ID)
+        val call = service.getDataByCountryLive(slug, defaultStatus, Constants.COIVD19_APP_ID)
         call.enqueue(object : Callback<List<CommonResponse>> {
             override fun onFailure(call: Call<List<CommonResponse>>, t: Throwable) {
                 Log.d(Constants.LOG_TAG, t.localizedMessage, t)

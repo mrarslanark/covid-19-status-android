@@ -15,5 +15,6 @@
     <string name="ERROR_700">ERROR 700 OCCURRED!</string>
     <string name="country_detail">Country Detail</string>
     <string name="scroll_to_bottom">Scroll to Bottom</string>
-    <string name="refresh">Refresh</string>
+    <string name="info">Information</string>
+    <string name="active_cases">Active Cases</string>
 </resources>
