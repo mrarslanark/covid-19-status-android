@@ -1,19 +1,13 @@
-package com.example.covid_19status
+package tech.appclub.covid_19status
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
-import com.example.covid_19status.Constants.Companion.LOG_TAG
-import com.example.covid_19status.databinding.ActivityMainBinding
-import org.json.JSONException
-import org.json.JSONObject
-import java.io.IOException
-import java.nio.charset.StandardCharsets.UTF_8
+import tech.appclub.covid_19status.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,7 +16,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this,
+            R.layout.activity_main
+        )
 
         setSupportActionBar(binding.toolbar)
 
@@ -34,7 +30,11 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(navController.graph)
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.home_dest, R.id.countries_dest, R.id.safety_dest)
+            setOf(
+                R.id.home_dest,
+                R.id.countries_dest,
+                R.id.safety_dest
+            )
         )
 
         binding.bottomNavView.setupWithNavController(navController)

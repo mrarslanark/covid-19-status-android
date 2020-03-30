@@ -1,28 +1,28 @@
-package com.example.covid_19status
+package tech.appclub.covid_19status.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.covid_19status.databinding.CountryDetailItemViewBinding
-import com.example.covid_19status.response.CommonResponse
+import tech.appclub.covid_19status.databinding.CountryItemViewBinding
+import tech.appclub.covid_19status.response.CountryResponse
 
 class CountryDetailAdapter internal constructor(
-    private val countriesDetailList: List<CommonResponse>
+    private val countriesDetailList: List<CountryResponse>
 ) : RecyclerView.Adapter<CountryDetailAdapter.CountryDetailViewHolder>() {
 
     inner class CountryDetailViewHolder internal constructor(
-        private val binding: CountryDetailItemViewBinding
+        private val binding: CountryItemViewBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(countries: CommonResponse) {
-            binding.country = countries
+        fun bind(countries: CountryResponse) {
+            binding.countries = countries
             binding.executePendingBindings()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryDetailViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val itemBinding = CountryDetailItemViewBinding.inflate(layoutInflater, parent, false)
+        val itemBinding = CountryItemViewBinding.inflate(layoutInflater, parent, false)
         return CountryDetailViewHolder(itemBinding)
     }
 

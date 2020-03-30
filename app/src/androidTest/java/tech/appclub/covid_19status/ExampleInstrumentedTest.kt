@@ -1,4 +1,4 @@
-package com.example.covid_19status
+package tech.appclub.covid_19status
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

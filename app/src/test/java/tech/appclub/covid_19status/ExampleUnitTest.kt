@@ -1,4 +1,4 @@
-package com.example.covid_19status
+package tech.appclub.covid_19status
 
 import org.junit.Test
 
