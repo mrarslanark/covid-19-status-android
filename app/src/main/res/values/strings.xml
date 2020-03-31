@@ -80,5 +80,9 @@
         motivate them.
     </string>
     <string name="statistics">Statistics</string>
+    <string name="no_network_toast">Not Connected to a Network!</string>
+    <string name="network_dialog_title">No Network Found!</string>
+    <string name="network_dialog_message">For Live Statistics, Connect to a network and select Try again.</string>
+    <string name="network_dialog_positive_button">Try Again</string>
 
 </resources>

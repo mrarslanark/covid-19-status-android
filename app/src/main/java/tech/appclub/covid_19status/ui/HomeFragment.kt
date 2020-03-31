@@ -1,10 +1,12 @@
 package tech.appclub.covid_19status.ui
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import retrofit2.Call
@@ -12,10 +14,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import tech.appclub.covid_19status.MainActivity
 import tech.appclub.covid_19status.R
 import tech.appclub.covid_19status.common.Constants.Companion.LOG_TAG
 import tech.appclub.covid_19status.common.Constants.Companion.NINJA_COVID19_APP_ID
 import tech.appclub.covid_19status.common.Constants.Companion.NINJA_COVID19_URL
+import tech.appclub.covid_19status.common.Constants.Companion.isConnected
 import tech.appclub.covid_19status.databinding.FragmentHomeBinding
 import tech.appclub.covid_19status.interfaces.APIService
 import tech.appclub.covid_19status.response.TotalResponse
@@ -39,10 +43,19 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loadData()
+        if (isConnected(requireContext())) {
+            loadData()
+        } else {
+            showAlertDialogBox()
+        }
 
         binding.swipeRefreshLayout.setOnRefreshListener {
-            loadData()
+
+            if (isConnected(requireContext())) {
+                loadData()
+            } else {
+                showAlertDialogBox()
+            }
             binding.swipeRefreshLayout.isRefreshing = false
         }
 
@@ -54,10 +67,31 @@ class HomeFragment : Fragment() {
 
     }
 
+    private fun showAlertDialogBox() {
+        val dialogBox = (requireActivity() as MainActivity).alertDialogBox()
+        val button = dialogBox.getButton(AlertDialog.BUTTON_POSITIVE)
+        button.setOnClickListener {
+            if (isConnected(requireContext())) {
+                loadData()
+                dialogBox.dismiss()
+            } else {
+                Toast.makeText(
+                    requireContext(), getString(R.string.no_network_toast),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
     private fun loadData() {
+
+        Log.d(LOG_TAG, "Connected to Internet: Fetching Data")
         binding.progressBar.visibility = View.VISIBLE
         val responseListener = object : HomeResponseListener {
-            override fun onSuccess(call: Call<TotalResponse>, response: Response<TotalResponse>) {
+            override fun onSuccess(
+                call: Call<TotalResponse>,
+                response: Response<TotalResponse>
+            ) {
                 val data = response.body()
                 if (data != null) {
                     binding.total = data
@@ -98,7 +132,11 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_refresh -> {
-                loadData()
+                if (isConnected(requireContext())) {
+                    loadData()
+                } else {
+                    showAlertDialogBox()
+                }
                 true
             }
             else -> super.onOptionsItemSelected(item)
