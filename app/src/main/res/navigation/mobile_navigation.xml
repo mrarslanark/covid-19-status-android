@@ -41,5 +41,10 @@
             android:name="response"
             app:argType="tech.appclub.covid_19status.response.CountryResponse" />
     </fragment>
+    <fragment
+        android:id="@+id/safety_dest"
+        android:name="tech.appclub.covid_19status.ui.SafetyFragment"
+        android:label="@string/title_safety_fragment"
+        tools:layout="@layout/fragment_safety" />
 
 </navigation>

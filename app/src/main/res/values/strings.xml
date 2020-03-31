@@ -20,11 +20,30 @@
 
     </string>
 
-    <string name="app_club_link">
-        Copyright © 2020 <a href="http://appclub.tech/">APP CLUB</a>\nData Source - https://corona.lmao.ninja
+    <string name="app_club_link">Copyright © 2020 <a href="http://appclub.tech/">APP CLUB</a>\nData Source - https://corona.lmao.ninja
     </string>
     <string name="title_fragment_info">Information</string>
     <string name="country_flag">Country Flag</string>
     <string name="cases_today">Cases Today</string>
     <string name="deaths_today">Deaths Today</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_safety_fragment">Safety Center</string>
+    <string name="refresh_status">Refresh Status</string>
+    <string name="navigation_information">Navigation Information</string>
+    <string name="stats_desc">Stats (Statistics) tab contains information on the global count of
+        <b>total cases</b>, <b>active cases</b>, <b>total deaths</b>, and <b>total recovered</b>
+        which are shown above. Either swipe to refresh the statistics or use the icon in the top
+        right
+    </string>
+    <string name="countries_desc">
+        Countries tab contains a list of every country with information regarding total cases, deaths
+        and recovered. Use the search bar to search your country. Swipe down to refresh statistics in
+        the countries tab
+    </string>
+    <string name="safety_center_desc">
+        Safety tab is the safety center where precautions from COVID-19 are mentioned. As this application
+        is developed in Pakistan, we have provided the official website and helpline for Pakistan.
+    </string>
 </resources>

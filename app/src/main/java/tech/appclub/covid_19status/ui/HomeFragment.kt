@@ -3,7 +3,6 @@ package tech.appclub.covid_19status.ui
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import retrofit2.Call
@@ -18,7 +17,6 @@ import tech.appclub.covid_19status.common.Constants.Companion.NINJA_COVID19_URL
 import tech.appclub.covid_19status.databinding.FragmentHomeBinding
 import tech.appclub.covid_19status.interfaces.APIService
 import tech.appclub.covid_19status.response.TotalResponse
-import java.text.DecimalFormat
 
 class HomeFragment : Fragment() {
 
@@ -39,12 +37,23 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val decimalFormat = DecimalFormat()
+        loadData()
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            loadData()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+
+    }
+
+    private fun loadData() {
+        binding.progressBar.visibility = View.VISIBLE
         val responseListener = object : HomeResponseListener {
             override fun onSuccess(call: Call<TotalResponse>, response: Response<TotalResponse>) {
                 val data = response.body()
                 if (data != null) {
                     binding.total = data
+                    binding.progressBar.visibility = View.INVISIBLE
                 }
             }
 
@@ -53,7 +62,6 @@ class HomeFragment : Fragment() {
             }
         }
         getData(responseListener)
-
     }
 
     private fun getData(responseListener: HomeResponseListener) {
@@ -73,6 +81,20 @@ class HomeFragment : Fragment() {
                 responseListener.onSuccess(call, response)
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.home_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_refresh -> {
+                loadData()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private interface HomeResponseListener {

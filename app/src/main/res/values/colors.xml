@@ -5,6 +5,6 @@
     <color name="colorAccent">#303F9F</color>
     <color name="totalCasesBG">#C2185B</color>
     <color name="activeCasesBG">#F57C00</color>
-    <color name="totalDeathsBG">#D32F2F</color>
+    <color name="totalDeathsBG">#212121</color>
     <color name="totalRecoveredBG">#388E3C</color>
 </resources>
