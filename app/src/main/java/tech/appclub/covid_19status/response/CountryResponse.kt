@@ -29,15 +29,6 @@ class CountryResponse : Serializable {
     @SerializedName("active")
     val active: Long? = null
 
-    @SerializedName("critical")
-    val critical: Long? = null
-
-    @SerializedName("casesPerOneMillion")
-    val casesPerOneMillion: Double? = null
-
-    @SerializedName("deathsPerOneMillion")
-    val deathsPerOneMillion: Double? = null
-
     @SerializedName("updated")
     val updated: Long? = null
 }
@@ -46,12 +37,6 @@ class CountryInfo {
 
     @SerializedName("_id")
     val id: Long? = null
-
-    @SerializedName("iso2")
-    val iso2: String? = null
-
-    @SerializedName("iso3")
-    val iso3: String? = null
 
     @SerializedName("lat")
     val lat: Double? = null

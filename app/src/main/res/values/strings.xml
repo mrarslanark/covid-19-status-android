@@ -8,42 +8,77 @@
     <string name="total_cases">Total Cases</string>
     <string name="total_deaths">Total Deaths</string>
     <string name="total_recovered">Total Recovered</string>
-    <string name="updating">Updating…</string>
-    <string name="updated">Update Again</string>
-    <string name="ERROR_700">ERROR 700 OCCURRED!</string>
     <string name="country_detail">Country Detail</string>
-    <string name="scroll_to_bottom">Scroll to Bottom</string>
-    <string name="info">Information</string>
     <string name="active_cases">Active Cases</string>
-
-    <string name="data_sources">
-
-    </string>
 
     <string name="app_club_link">Copyright © 2020 <a href="http://appclub.tech/">APP CLUB</a>\nData Source - https://corona.lmao.ninja
     </string>
-    <string name="title_fragment_info">Information</string>
     <string name="country_flag">Country Flag</string>
     <string name="cases_today">Cases Today</string>
     <string name="deaths_today">Deaths Today</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_safety_fragment">Safety Center</string>
     <string name="refresh_status">Refresh Status</string>
     <string name="navigation_information">Navigation Information</string>
-    <string name="stats_desc">Stats (Statistics) tab contains information on the global count of
-        <b>total cases</b>, <b>active cases</b>, <b>total deaths</b>, and <b>total recovered</b>
-        which are shown above. Either swipe to refresh the statistics or use the icon in the top
-        right
+    <string name="stats_desc">Statistics tab contains information on the global count.
+         Either swipe to refresh the statistics or use the icon in the top right corner.
     </string>
     <string name="countries_desc">
-        Countries tab contains a list of every country with information regarding total cases, deaths
-        and recovered. Use the search bar to search your country. Swipe down to refresh statistics in
-        the countries tab
+        Countries tab contains a list of every country. Select a country for detailed information.
     </string>
-    <string name="safety_center_desc">
-        Safety tab is the safety center where precautions from COVID-19 are mentioned. As this application
-        is developed in Pakistan, we have provided the official website and helpline for Pakistan.
+    <string name="safety_center_desc">Safety tab is the safety center where precautions from COVID-19 are mentioned. As this application
+        is developed in Pakistan, we have provided the official website and helpline for Pakistan only.
     </string>
+    <string name="next">Next</string>
+    <string name="visit_pakistan_official_covid_19_website">Visit Pakistan Official COVID-19 Website</string>
+    <string name="call_helpline_1166">Call helpline (1166) - Pakistan</string>
+    <string name="safety_tips">Safety Tips</string>
+
+    <string name="safety_desc">A list of precautions which should be taken against COVID-19 as there isn\'t
+        a vaccine available yet. Ensure following steps are being taken to keep yourself and others out of risk.
+    </string>
+
+    <string name="tips_image">Safety Tips Placeholder</string>
+
+    <!-- Hand Wash -->
+    <string name="hand_wash_title">Wash your hands</string>
+    <string name="hand_wash_description">Wash your hands for 20 seconds using an Anti-bacterial soap or hand wash.
+         If outside, carry a sanitizer. Do not greet anyone when visiting anywhere. Follow Social Distancing for time-being for keeping
+        yourself and others out of risk
+    </string>
+
+    <!-- Medical Mask -->
+    <string name="medical_mask_title">Use a medical mask</string>
+    <string name="medical_mask_description">Use a medical mask whenever going outside or if you are facing the symptoms
+        of COVID-19. If you have Flu, are frequently sneezing or going through a fever, use a mask so it does not effect others
+    </string>
+
+    <!-- Social Distancing -->
+    <string name="social_distancing_title">Understand Social Distancing</string>
+    <string name="social_distancing_description">Avoid any kind of gathering, stay at least 3ft away from everyone.
+         Don\'t roam outside due to unnecessary means. Keep yourself clean and avoid any kind of physical contact.
+    </string>
+
+    <!-- Stay Home -->
+    <string name="stay_home_title">Stay at Home</string>
+    <string name="stay_home_description">Stay inside your homes. Your home is your fortress against COVID-19.
+         Avoid going outside due to unnecessary reasons. Work from home if possible and if not then take every possible
+         precaution like medical mask, sanitizer, and gloves.
+    </string>
+
+    <!-- Fruits & Vegetables -->
+    <string name="fruits_veges_title">Consume Fruits &amp; Vegetables</string>
+    <string name="fruits_veges_description">Fruits &amp; vegetables make your immune system strong, as COVID-19 can be defeated
+         with a strong immune system. Eat, Share, Advise Fruits &amp; Vegetables everyday to make your immune system
+         a powerful shield against COVID-19.
+    </string>
+
+    <!-- Kindess -->
+    <string name="kindness_title">Be Kind</string>
+    <string name="kindness_description">Be Kind to everyone as much as possible in this time of need.
+        Help others as per their requirements. Take care of your elderly, love them, respect them and
+        motivate them.
+    </string>
+    <string name="statistics">Statistics</string>
+
 </resources>

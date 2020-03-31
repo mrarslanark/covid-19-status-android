@@ -1,18 +1,14 @@
 package tech.appclub.covid_19status.ui
 
 import android.os.Bundle
-import android.text.format.DateFormat
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -23,9 +19,6 @@ import tech.appclub.covid_19status.R
 import tech.appclub.covid_19status.common.Constants.Companion.LOG_TAG
 import tech.appclub.covid_19status.databinding.FragmentCountryDetailBinding
 import tech.appclub.covid_19status.response.CountryResponse
-import java.text.DecimalFormat
-import java.text.SimpleDateFormat
-import java.util.*
 
 class CountryDetailFragment : Fragment(), OnMapReadyCallback {
 
@@ -41,7 +34,7 @@ class CountryDetailFragment : Fragment(), OnMapReadyCallback {
         country = safeArgs.response
 
         (requireActivity() as AppCompatActivity).run {
-            supportActionBar?.setTitle(country.country)
+            supportActionBar?.title = country.country
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back_nav)
         }
 

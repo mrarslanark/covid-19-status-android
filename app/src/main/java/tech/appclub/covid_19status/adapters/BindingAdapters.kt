@@ -1,9 +1,9 @@
 package tech.appclub.covid_19status.adapters
 
+import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
@@ -12,6 +12,11 @@ import java.util.*
 @BindingAdapter("app:setImage")
 fun setImage(view: ImageView, image: String) {
     Glide.with(view.context).load(image).into(view)
+}
+
+@BindingAdapter("app:setLocalImage")
+fun setLocalImage(view: ImageView, drawable: Drawable) {
+    Glide.with(view.context).load(drawable).into(view)
 }
 
 @BindingAdapter("app:setDate")

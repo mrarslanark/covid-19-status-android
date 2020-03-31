@@ -17,28 +17,37 @@
                 android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
+                android:weightSum="2"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/pk_website"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="@string/visit_pakistan_official_covid_19_website"
                     android:textColor="@android:color/black"
+                    android:textSize="12sp"
                     app:backgroundTint="@android:color/white"
                     app:elevation="1dp"
-                    android:textSize="12sp"
                     app:strokeColor="#006600"
                     app:strokeWidth="1dp" />
 
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp" />
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/helpline"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
+                    android:layout_weight="1"
                     android:text="@string/call_helpline_1166"
                     android:textColor="@android:color/black"
+                    android:textSize="12sp"
                     app:backgroundTint="@android:color/white"
                     app:strokeColor="#FF6F00"
                     app:strokeWidth="1dp" />
@@ -62,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/safety_desc"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
