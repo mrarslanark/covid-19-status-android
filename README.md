@@ -5,6 +5,9 @@ Android application which displays up-to-date statistics of COVID-19 (Coronaviru
 - [x] Total statistics of COVID-19
 - [x] Statistics per country
 
+## API consumed
+[disease.sh - Open Disease Data](https://corona.lmao.ninja/)
+
 ## Requirements
 - [Android Studio](https://developer.android.com/studio)
 - JDK 8.0+
